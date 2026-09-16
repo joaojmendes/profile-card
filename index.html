@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>João Mendes — Microsoft 365 & AI Builder</title>
+  <!-- LinkedIn / OG meta -->
+  <meta property="og:title" content="João Mendes — Microsoft 365 & AI Builder" />
+  <meta property="og:description" content="Microsoft 365 MVP · SPFx · TypeScript · React · Microsoft Graph · Copilot. Build solutions. Empower people. Shape the future of work." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://joaojmendes.github.io/profile-card/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="description" content="Microsoft 365 MVP · SPFx · TypeScript · React · Microsoft Graph · Copilot. Build solutions. Empower people. Shape the future of work." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0A1628;
+    --navy-mid: #1E2A3B;
+    --navy-light: #243246;
+    --blue: #0078D4;
+    --blue-bright: #2B88D8;
+    --blue-glow: rgba(0,120,212,0.18);
+    --gold: #FFB900;
+    --white: #FFFFFF;
+    --off-white: #E8EDF5;
+    --muted: rgba(232,237,245,0.55);
+    --font-display: 'Space Grotesk', system-ui, sans-serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+  }
+
+  html { background: #060D18; }
+
+  body {
+    font-family: var(--font-body);
+    background: #060D18;
+    color: var(--white);
+    max-width: 960px;
+    margin: 0 auto;
+    min-height: 100vh;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    background: var(--navy);
+    padding: 56px 56px 48px;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(0,120,212,0.3);
+  }
+
+  .hero-geo {
+    position: absolute;
+    top: 0; right: 0;
+    width: 420px; height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .hero-geo svg {
+    position: absolute;
+    top: -20px; right: -40px;
+    width: 440px; height: 340px;
+    opacity: 0.12;
+  }
+
+  .hero-accent-bar {
+    position: absolute;
+    left: 0; top: 0;
+    width: 4px; height: 100%;
+    background: linear-gradient(180deg, var(--blue) 0%, var(--blue-bright) 60%, transparent 100%);
+  }
+
+  .mvp-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,185,0,0.1);
+    border: 1px solid rgba(255,185,0,0.35);
+    border-radius: 6px;
+    padding: 6px 14px;
+    margin-bottom: 20px;
+  }
+
+  .mvp-badge-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+    box-shadow: 0 0 8px var(--gold);
+  }
+
+  .mvp-badge span {
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  .hero-name {
+    font-family: var(--font-display);
+    font-size: 52px;
+    font-weight: 700;
+    line-height: 1.0;
+    color: var(--white);
+    letter-spacing: -0.02em;
+    margin-bottom: 10px;
+  }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--blue-bright);
+    margin-bottom: 22px;
+    letter-spacing: -0.01em;
+  }
+
+  .hero-tagline {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--off-white);
+    max-width: 500px;
+    line-height: 1.6;
+    margin-bottom: 32px;
+    opacity: 0.9;
+  }
+
+  .hero-quote {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* ── STACK PILLS ── */
+  .stack-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 28px;
+  }
+
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px;
+    border-radius: 100px;
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-weight: 600;
+    border: 1px solid;
+  }
+
+  .pill-blue {
+    background: rgba(0,120,212,0.12);
+    border-color: rgba(0,120,212,0.4);
+    color: #66B2FF;
+  }
+
+  .pill-muted {
+    background: rgba(232,237,245,0.07);
+    border-color: rgba(232,237,245,0.15);
+    color: var(--off-white);
+  }
+
+  .pill-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+    opacity: 0.7;
+  }
+
+  /* ── CONTENT GRID ── */
+  .content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1px;
+    background: rgba(255,255,255,0.06);
+  }
+
+  .panel {
+    background: var(--navy-mid);
+    padding: 36px 32px;
+  }
+
+  .panel-label {
+    font-family: var(--font-display);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--blue-bright);
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(0,120,212,0.2);
+  }
+
+  .build-item {
+    margin-bottom: 20px;
+  }
+
+  .build-item:last-child { margin-bottom: 0; }
+
+  .build-name {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 3px;
+  }
+
+  .build-desc {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ── VALUES ── */
+  .value-item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+
+  .value-item:last-child { margin-bottom: 0; }
+
+  .value-icon {
+    flex-shrink: 0;
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    background: var(--blue-glow);
+    border: 1px solid rgba(0,120,212,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+  }
+
+  .value-name {
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 2px;
+  }
+
+  .value-desc {
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ── COMMUNITY ── */
+  .community-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .community-item:last-child { border-bottom: none; }
+
+  .comm-icon {
+    flex-shrink: 0;
+    width: 34px; height: 34px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+  }
+
+  .comm-icon-m365 { background: rgba(0,120,212,0.15); border: 1px solid rgba(0,120,212,0.3); }
+  .comm-icon-pnp  { background: rgba(0,160,80,0.12);  border: 1px solid rgba(0,160,80,0.3); }
+  .comm-icon-ai   { background: rgba(120,80,255,0.12); border: 1px solid rgba(120,80,255,0.3); }
+  .comm-icon-spk  { background: rgba(255,185,0,0.1);   border: 1px solid rgba(255,185,0,0.3); }
+
+  .comm-name {
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 1px;
+  }
+
+  .comm-role {
+    font-size: 11px;
+    color: var(--muted);
+  }
+
+  /* ── MOTTO BAR ── */
+  .motto-bar {
+    background: var(--navy-light);
+    padding: 24px 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid rgba(0,120,212,0.2);
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .motto-text {
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--blue-bright);
+  }
+
+  .motto-separator {
+    color: rgba(0,120,212,0.4);
+    font-size: 16px;
+    font-weight: 300;
+  }
+
+  .motto-tagline {
+    font-size: 12px;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  /* ── LOCATION / LINKS ── */
+  .meta-bar {
+    background: #060D18;
+    padding: 18px 56px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .meta-item svg {
+    width: 14px; height: 14px;
+    stroke: var(--blue-bright);
+    stroke-width: 1.5;
+    fill: none;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 760px) {
+    .hero { padding: 36px 28px 36px; }
+    .hero-name { font-size: 36px; }
+    .hero-title { font-size: 15px; }
+    .content { grid-template-columns: 1fr; }
+    .motto-bar, .meta-bar { padding: 20px 28px; }
+    .hero-geo { display: none; }
+  }
+
+  @media print {
+    body { background: white; color: #0A1628; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-accent-bar"></div>
+
+  <!-- Background geometric SVG -->
+  <div class="hero-geo">
+    <svg viewBox="0 0 440 320" xmlns="http://www.w3.org/2000/svg" fill="none">
+      <circle cx="360" cy="80" r="180" stroke="#0078D4" stroke-width="1"/>
+      <circle cx="360" cy="80" r="120" stroke="#0078D4" stroke-width="0.6"/>
+      <circle cx="360" cy="80" r="60" stroke="#0078D4" stroke-width="0.4"/>
+      <line x1="160" y1="80" x2="440" y2="80" stroke="#0078D4" stroke-width="0.5"/>
+      <line x1="360" y1="-100" x2="360" y2="260" stroke="#0078D4" stroke-width="0.5"/>
+      <polygon points="360,80 250,200 470,200" stroke="#2B88D8" stroke-width="0.6" fill="rgba(0,120,212,0.04)"/>
+      <rect x="300" y="20" width="120" height="120" stroke="#0078D4" stroke-width="0.4" fill="none" transform="rotate(15,360,80)"/>
+    </svg>
+  </div>
+
+  <!-- MVP Badge -->
+  <div class="mvp-badge">
+    <div class="mvp-badge-dot"></div>
+    <span>Microsoft 365 MVP</span>
+  </div>
+
+  <h1 class="hero-name">João Mendes</h1>
+
+  <p class="hero-tagline">
+    Building intelligent solutions on Microsoft 365 and Copilot that help people and organizations work smarter. Developer at Spteck — SPFx, TypeScript, React, Microsoft Graph.
+  </p>
+  <p class="hero-quote">"From idea to impact. With code, creativity and AI."</p>
+
+  <div class="stack-row">
+    <span class="pill pill-blue"><span class="pill-dot"></span>SPFx</span>
+    <span class="pill pill-blue"><span class="pill-dot"></span>TypeScript</span>
+    <span class="pill pill-blue"><span class="pill-dot"></span>React</span>
+    <span class="pill pill-blue"><span class="pill-dot"></span>Microsoft Graph</span>
+    <span class="pill pill-blue"><span class="pill-dot"></span>Fluent UI v9</span>
+    <span class="pill pill-muted"><span class="pill-dot"></span>Microsoft Copilot</span>
+    <span class="pill pill-muted"><span class="pill-dot"></span>Azure</span>
+    <span class="pill pill-muted"><span class="pill-dot"></span>SharePoint</span>
+  </div>
+</header>
+
+<!-- THREE-COLUMN GRID -->
+<div class="content">
+
+  <!-- WHAT I BUILD -->
+  <div class="panel">
+    <div class="panel-label">What I build</div>
+
+    <div class="build-item">
+      <div class="build-name">SharePoint experiences</div>
+      <div class="build-desc">Modern sites, lists, libraries, permissions &amp; workflows.</div>
+    </div>
+    <div class="build-item">
+      <div class="build-name">Copilot plugins</div>
+      <div class="build-desc">Extensibility &amp; intelligent assistants for Microsoft Copilot.</div>
+    </div>
+    <div class="build-item">
+      <div class="build-name">React component libraries</div>
+      <div class="build-desc">Reusable UI systems under the @spteck namespace.</div>
+    </div>
+    <div class="build-item">
+      <div class="build-name">Dashboards &amp; monitoring tools</div>
+      <div class="build-desc">Data-driven apps that turn Microsoft 365 telemetry into action.</div>
+    </div>
+    <div class="build-item">
+      <div class="build-name">Workflow automation</div>
+      <div class="build-desc">Turn mundane flows into intelligent, reusable components.</div>
+    </div>
+  </div>
+
+  <!-- VALUES -->
+  <div class="panel">
+    <div class="panel-label">How I think</div>
+
+    <div class="value-item">
+      <div class="value-icon">💡</div>
+      <div>
+        <div class="value-name">Innovation</div>
+        <div class="value-desc">Always exploring new ideas and better ways to solve real problems.</div>
+      </div>
+    </div>
+    <div class="value-item">
+      <div class="value-icon">⚙️</div>
+      <div>
+        <div class="value-name">Engineering excellence</div>
+        <div class="value-desc">Quality, performance and attention to detail in every line of code.</div>
+      </div>
+    </div>
+    <div class="value-item">
+      <div class="value-icon">🔁</div>
+      <div>
+        <div class="value-name">Build once. Reuse everywhere.</div>
+        <div class="value-desc">Shared components, open patterns, compounding value over time.</div>
+      </div>
+    </div>
+    <div class="value-item">
+      <div class="value-icon">🤖</div>
+      <div>
+        <div class="value-name">AI augmentation</div>
+        <div class="value-desc">AI enhances developers and amplifies human creativity.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMMUNITY -->
+  <div class="panel">
+    <div class="panel-label">Community &amp; impact</div>
+
+    <div class="community-item">
+      <div class="comm-icon comm-icon-m365">🌐</div>
+      <div>
+        <div class="comm-name">Microsoft 365 Community</div>
+        <div class="comm-role">Sharing knowledge, demos and real-world solutions</div>
+      </div>
+    </div>
+    <div class="community-item">
+      <div class="comm-icon comm-icon-pnp">🟢</div>
+      <div>
+        <div class="comm-name">SharePoint PnP</div>
+        <div class="comm-role">Active contributor to sp-dev-fx-controls-react and open source projects</div>
+      </div>
+    </div>
+    <div class="community-item">
+      <div class="comm-icon comm-icon-ai">🔮</div>
+      <div>
+        <div class="comm-name">Copilot Ecosystem</div>
+        <div class="comm-role">Exploring and building the future of work with Copilot</div>
+      </div>
+    </div>
+    <div class="community-item">
+      <div class="comm-icon comm-icon-spk">🎤</div>
+      <div>
+        <div class="comm-name">Speaker &amp; presenter</div>
+        <div class="comm-role">Community calls, events and #SharingIsCaring</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- MOTTO BAR -->
+<div class="motto-bar">
+  <span class="motto-text">Build solutions</span>
+  <span class="motto-separator">·</span>
+  <span class="motto-text">Empower people</span>
+  <span class="motto-separator">·</span>
+  <span class="motto-text">Shape the future of work</span>
+  <span class="motto-tagline">Open source mindset. Community driven. Sharing is caring.</span>
+</div>
+
+<!-- META BAR -->
+<div class="meta-bar">
+  <div class="meta-item">
+    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="#2B88D8" stroke="none"/></svg>
+    Porto, Portugal
+  </div>
+  <div class="meta-item">
+    <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><polyline points="16,7 12,2 8,7"/></svg>
+    Kuehne+Nagel
+  </div>
+  <div class="meta-item">
+    <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+    github.com/joaojmendes
+  </div>
+  <div class="meta-item">
+    <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+    linkedin.com/in/joaojosemendes
+  </div>
+</div>
+
+</body>
+</html>
